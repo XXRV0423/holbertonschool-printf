@@ -12,28 +12,32 @@ int _putchar(char c)
 }
 
 /**
- * print_char - prints a single character form va_list
+ * print_char - prints a single character from va_list
  * @args: va_list with character argument
  *
  * Return: number of characters printed
  */
 int print_char(va_list args)
 {
-	char c = va_arg(args, int);
+	char c;
 
+	c = va_arg(args, int);
 	return (_putchar(c));
 }
 
 /**
- * print_string - print a string form va_list
+ * print_string - prints a string from va_list
  * @args: va_list with a string argument
  *
  * Return: number of characters printed
  */
 int print_string(va_list args)
 {
-	char *str = va_arg(args, char *);
-	int count = 0;
+	char *str;
+	int count;
+
+	str = va_arg(args, char *);
+	count = 0;
 
 	if (!str)
 		str = "(null)";
@@ -43,11 +47,55 @@ int print_string(va_list args)
 		count += _putchar(*str);
 		str++;
 	}
+
 	return (count);
 }
 
 /**
- * print_percent - print a literal percent sign
+ * print_integer_helper - prints an integer recursively
+ * @n: integer to print
+ *
+ * Return: number of characters printed
+ */
+int print_integer_helper(int n)
+{
+	int count;
+
+	count = 0;
+	if (n / 10)
+		count += print_integer_helper(n / 10);
+
+	write(1, &"0123456789"[n % 10], 1);
+	return (count + 1);
+}
+
+/**
+ * print_integer - prints an integer from va_list
+ * @args: va_list with integer argument
+ *
+ * Return: number of characters printed
+ */
+int print_integer(va_list args)
+{
+	int n;
+	int count;
+
+	n = va_arg(args, int);
+	count = 0;
+
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		count++;
+		n = -n;
+	}
+
+	count += print_integer_helper(n);
+	return (count);
+}
+
+/**
+ * print_percent - prints a literal percent sign
  *
  * Return: 1
  */
@@ -57,7 +105,7 @@ int print_percent(void)
 }
 
 /**
- * handle_specifier - dispatchesto the correct print function
+ * handle_specifier - dispatches to the correct print function
  * @spec: the conversion specifier character
  * @args: va_list of arguments
  *
@@ -71,6 +119,8 @@ int handle_specifier(char spec, va_list args)
 		return (print_string(args));
 	if (spec == '%')
 		return (print_percent());
+	if (spec == 'd' || spec == 'i')
+		return (print_integer(args));
 
 	_putchar('%');
 	_putchar(spec);
