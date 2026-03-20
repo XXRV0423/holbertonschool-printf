@@ -1,0 +1,35 @@
+_printf(3)              Custom Functions Manual              _printf(3)
+
+NAME
+       _printf - custom implementation of the printf function
+
+SYNOPSIS
+       #include "main.h"
+
+       int _printf(const char *format, ...);
+
+DESCRIPTION
+       The _printf function writes formatted output to the standard output.
+
+       Supported format specifiers:
+
+       %c      Print a single character.
+       %s      Print a null-terminated string. If NULL, "(null)" is printed.
+       %%      Print a literal percent sign.
+       %d      Print a decimal integer.
+       %i      Print an integer (base 10).
+
+       If an unknown specifier is encountered, the percent sign and
+       the specifier character are printed as-is.
+
+RETURN VALUE
+       Returns the number of characters printed (excluding the null byte).
+       Returns -1 if format is NULL.
+
+AUTHORS
+       Xander Roldan and Alejandro J. Colombani
+
+SEE ALSO
+       printf(3)
+
+Holberton School                March 2026                   _printf(3)
