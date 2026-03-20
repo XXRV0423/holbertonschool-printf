@@ -12,7 +12,7 @@ int _putchar(char c)
 }
 
 /**
- * print_char - prints a single character form va_list
+ * print_char - prints a single character from va_list
  * @args: va_list with character argument
  *
  * Return: number of characters printed
@@ -57,7 +57,7 @@ int print_percent(void)
 }
 
 /**
- * handle_specifier - dispatchesto the correct print function
+ * handle_specifier - dispatches to the correct print function
  * @spec: the conversion specifier character
  * @args: va_list of arguments
  *
@@ -71,6 +71,8 @@ int handle_specifier(char spec, va_list args)
 		return (print_string(args));
 	if (spec == '%')
 		return (print_percent());
+	if (spec == 'd' || spec == 'i')
+		return (print_integer(args));
 
 	_putchar('%');
 	_putchar(spec);

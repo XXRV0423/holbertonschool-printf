@@ -1,4 +1,5 @@
 #include "main.h"
+#include <limits.h>
 
 /**
  * print_integer_helper - prints an integer recursively
@@ -31,6 +32,12 @@ int print_integer(va_list args)
 
 	n = va_arg(args, int);
 	count = 0;
+
+	if (n == INT_MIN)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
 
 	if (n < 0)
 	{
