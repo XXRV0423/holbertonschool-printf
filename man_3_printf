@@ -1,35 +1,73 @@
-_printf(3)              Custom Functions Manual              _printf(3)
+.TH _PRINTF 3 "March 2026" "Holberton School" "_printf manual"
 
-NAME
-       _printf - custom implementation of the printf function
+.SH NAME
+_printf \- custom implementation of the printf function
 
-SYNOPSIS
-       #include "main.h"
+.SH SYNOPSIS
+.B #include "main.h"
+.PP
+.BI "int _printf(const char *" format ", ...);"
 
-       int _printf(const char *format, ...);
+.SH DESCRIPTION
+The
+.B _printf
+function writes formatted output to the standard output.
 
-DESCRIPTION
-       The _printf function writes formatted output to the standard output.
+It supports the following format specifiers:
 
-       Supported format specifiers:
+.TP
+.B %c
+Print a single character.
 
-       %c      Print a single character.
-       %s      Print a null-terminated string. If NULL, "(null)" is printed.
-       %%      Print a literal percent sign.
-       %d      Print a decimal integer.
-       %i      Print an integer (base 10).
+.TP
+.B %s
+Print a null-terminated string. If the argument is NULL, "(null)" is printed.
 
-       If an unknown specifier is encountered, the percent sign and
-       the specifier character are printed as-is.
+.TP
+.B %%
+Print a literal percent sign.
 
-RETURN VALUE
-       Returns the number of characters printed (excluding the null byte).
-       Returns -1 if format is NULL.
+.TP
+.B %d
+Print a decimal integer.
 
-AUTHORS
-       Xander Roldan and Alejandro J. Colombani
+.TP
+.B %i
+Print an integer in base 10.
 
-SEE ALSO
-       printf(3)
+If an unknown specifier is encountered, the percent sign and the
+specifier character are printed as-is.
 
-Holberton School                March 2026                   _printf(3)
+.SH RETURN VALUE
+Returns the number of characters printed on success.
+
+Returns -1 if
+.I format
+is NULL
+
+.SH FILES
+.TP
+.I main.h
+Header file containing the prototype for
+.B _printf
+and helper functions.
+
+.TP
+.I printf.c
+Contains the main
+.B _printf
+function.
+
+.TP
+.I handlers.c
+Contains functions for supported specifiers.
+
+.TP
+.I integer_handlers.c
+Contains integer printing functions.
+
+.SH AUTHORS
+Xander Roldán and Alejandro J. Colombani
+
+.SH SEE ALSO
+.BR printf (3),
