@@ -200,8 +200,8 @@ Previous line printed 38 characters.
 
 ## Authors
 
-- **XXRV0423** — [GitHub](https://github.com/XXRV0423)
-- **alejandrojcolombani** — [GitHub](https://github.com/alejandrojcolombani)
+- **Xander X. Roldan Villarrubia** — [GitHub](https://github.com/XXRV0423)
+- **Alejandro J. Colombani** — [GitHub](https://github.com/alejandrojcolombani)
 
 ---
 
